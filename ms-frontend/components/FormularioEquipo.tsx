@@ -63,7 +63,7 @@ export default function FormularioEquipo({catalogo}:{catalogo:Catalogo}) {
 
     console.log(body);
 
-    const response = await fetch("http://localhost:8081/api/equipos", {
+    const response = await fetch("http://localhost:8080/api/equipos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

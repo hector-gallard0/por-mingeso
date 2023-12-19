@@ -20,7 +20,7 @@ export default function AccionEquipo({equipo}:{equipo:Equipo}){
 
   async function ingresarPrestamo(data: any) {
     console.log(data);
-    const response = await fetch("http://localhost:8082/api/prestamos", {
+    const response = await fetch("http://localhost:8080/api/prestamos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -51,7 +51,7 @@ export default function AccionEquipo({equipo}:{equipo:Equipo}){
 
   async function ingresarDevolucion(data: any) {
     console.log(data);
-    const response = await fetch("http://localhost:8082/api/devoluciones", {
+    const response = await fetch("http://localhost:8080/api/devoluciones", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

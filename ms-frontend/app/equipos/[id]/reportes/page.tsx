@@ -11,7 +11,7 @@ type Params = {
 
 
 export default async function ReporteEquipoPage({params}:{params: Params} ){
-  const response = await fetch(`http://localhost:8082/api/reportes/prestamos?idEquipo=${params.id}`, {next: { revalidate: 3600, tags: ['reportes' + params.id] }});
+  const response = await fetch(`http://localhost:8080/api/reportes/prestamos?idEquipo=${params.id}`, {next: { revalidate: 3600, tags: ['reportes' + params.id] }});
   const rawResponse = await response.json();
   console.log(rawResponse);
   revalidateTag("reportes" + params.id);

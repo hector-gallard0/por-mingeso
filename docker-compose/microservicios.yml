@@ -1,0 +1,81 @@
+version: "3.8"
+services:
+  mysql-profesores:
+    container_name: db-profesores
+    image: mysql
+    restart: always
+    volumes:
+      - ./data/db1:/var/lib/mysql1
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: db-profesores
+    ports:
+      - 3306:3306
+  mysql-equipos:
+    container_name: db-equipos
+    image: mysql
+    restart: always
+    volumes:
+      - ./data/db2:/var/lib/mysql1
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: db-equipos
+    ports:
+      - 3307:3306
+  mysql-prestamos:
+    container_name: db-prestamos
+    image: mysql
+    restart: always
+    volumes:
+      - ./data/db3:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: db-prestamos
+    ports:
+      - 3308:3306
+  spring-config:
+    container_name: ms-config
+    image: polloh/ms-config
+    ports:
+      - "8084:8084"
+    deploy:
+      restart_policy:
+        condition: on-failure
+  spring-gateway:
+    container_name: ms-gateway
+    image: polloh/ms-gateway
+    ports:
+      - "8080:8080"
+    deploy:
+      restart_policy:
+        condition: on-failure    
+  spring-profesores:
+    container_name: ms-profesores
+    image: polloh/ms-profesores
+    ports:
+      - "8081:8081"    
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - mysql-profesores
+  # spring-equipos:
+  #   container_name: ms-equipos
+  #   image: polloh/ms-equipos
+  #   ports:
+  #     - "8082:8082"
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  #   depends_on:
+  #     - mysql-equipos
+  # spring-prestamos:
+  #   container_name: ms-prestamos
+  #   image: polloh/ms-prestamos
+  #   ports:
+  #     - "8083:8083"
+  #   deploy:
+  #     restart_policy:
+  #       condition: on-failure
+  #   depends_on:
+  #     - mysql-prestamos

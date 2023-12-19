@@ -90,6 +90,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>ms-profesores</finalName>
 	</build>
 
 </project>

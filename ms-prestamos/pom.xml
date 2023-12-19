@@ -94,6 +94,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>ms-prestamos</finalName>
 	</build>
 
 </project>
