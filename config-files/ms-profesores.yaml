@@ -8,7 +8,7 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://mysql-profesores:3306/db-profesores
+    url: jdbc:mysql://db-profesores:3306/db-profesores
     username: root
     password: 1234
   kafka:

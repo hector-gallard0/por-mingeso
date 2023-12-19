@@ -17,14 +17,14 @@ spring:
             allow-credentials: true
       routes:
         - id: ms-profesores
-          uri: http://spring-profesores:8081
+          uri: http://ms-profesores:8081
           predicates:
             - Path=/api/profesores/**
         - id: ms-equipos
-          uri: http://spring-equipos:8082
+          uri: http://ms-equipos:8082
           predicates:
             - Path=/api/equipos/**, /api/catalogo/**
         - id: ms-prestamos
-          uri: http://spring-prestamos:8083
+          uri: http://ms-prestamos:8083
           predicates:
             - Path=/api/prestamos/**, /api/devoluciones/**, /api/reportes/prestamos/**
