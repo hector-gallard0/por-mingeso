@@ -17,7 +17,7 @@ spring:
             allow-credentials: true
       routes:
         - id: ms-profesores
-          uri: http://ms-profesores
+          uri: http://ms_profesores:8081
           predicates:
             - Path=/api/profesores/**        
         - id: ms-equipos
