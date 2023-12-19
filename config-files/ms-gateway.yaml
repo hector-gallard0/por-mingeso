@@ -27,7 +27,7 @@ spring:
         - id: ms-equipos
           uri: http://ms-equipos:8082
           predicates:
-            - Path=/api/equipos/**, /api/catalogo/**, /api/equipos/**/verificar
+            - Path=/api/equipos/**, /api/catalogo/**
         - id: ms-prestamos
           uri: http://ms-prestamos:8083
           predicates:
