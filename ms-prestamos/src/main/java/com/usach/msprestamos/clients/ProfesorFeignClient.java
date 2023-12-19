@@ -13,7 +13,7 @@ import java.util.List;
 
 @FeignClient(
         name = "API-PROFESORES",
-        url = "http://localhost:8080/api/profesores",
+        url = "http://ms-gateway:8080/api/profesores",
         configuration = {FeignClientConfig.class, CustomErrorDecoder.class})
 public interface ProfesorFeignClient {
     @GetMapping(value = "/{rutProfesor}/verificar")

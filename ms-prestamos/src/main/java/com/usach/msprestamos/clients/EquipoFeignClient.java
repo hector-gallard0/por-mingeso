@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @FeignClient(name = "API-EQUIPOS",
-        url = "http://localhost:8081/api/equipos",
+        url = "http://ms-gateway:8080/api/equipos",
         configuration = {FeignClientConfig.class, CustomErrorDecoder.class})
 public interface EquipoFeignClient {
     @GetMapping(value = "/{idEquipo}/uso/{idUso}/verificar")

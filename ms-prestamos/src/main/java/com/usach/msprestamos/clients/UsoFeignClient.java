@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @FeignClient(name = "API-USOS",
-        url = "http://localhost:8081/api/usos",
+        url = "http://ms-gateway:8080/api/usos",
         configuration = {FeignClientConfig.class, CustomErrorDecoder.class})
 public interface UsoFeignClient {
 
