@@ -5,10 +5,19 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true    
+          enabled: true
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origin-patterns: '*'
+            allowed-methods: "*"
+            allowed-headers: "*"
+            allow-credentials: true
       routes:
         - id: ms-profesores
-          uri: http://ms-profesores:8081
+          uri: http://ms-profesores
           predicates:
             - Path=/api/profesores/**        
         - id: ms-equipos
