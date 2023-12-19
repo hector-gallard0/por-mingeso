@@ -1,0 +1,30 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origin-patterns: '*'
+            allowed-methods: "*"
+            allowed-headers: "*"
+            allow-credentials: true
+      routes:
+        - id: ms-profesores
+          uri: lb://localhost:8081
+          predicates:
+            - Path=/api/**
+        - id: ms-equipos
+          uri: lb://localhost:8082
+          predicates:
+            - Path=/api/**
+        - id: ms-prestamos
+          uri: lb://localhost:8083
+          predicates:
+            - Path=/api/**
