@@ -1,0 +1,16 @@
+server:
+  port: 8082
+spring:  
+  jpa:
+    database: MYSQL
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3307/db-equipos
+    username: root
+    password: 1234
+  kafka:
+    bootstrap:
+      servers: localhost:9092
