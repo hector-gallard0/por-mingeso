@@ -11,6 +11,3 @@ spring:
     url: jdbc:mysql://db-profesores:3306/db-profesores
     username: root
     password: 1234
-  kafka:
-    bootstrap:
-      servers: broker:9092

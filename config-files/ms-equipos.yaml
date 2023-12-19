@@ -8,9 +8,6 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost:3307/db-equipos
+    url: jdbc:mysql://db-equipos:3307/db-equipos
     username: root
     password: 1234
-  kafka:
-    bootstrap:
-      servers: localhost:9092
