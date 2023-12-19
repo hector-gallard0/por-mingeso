@@ -13,4 +13,4 @@ spring:
     password: 1234
   kafka:
     bootstrap:
-      servers: broker:9092
+      servers: localhost:9092
