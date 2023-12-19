@@ -19,12 +19,12 @@ spring:
         - id: ms-profesores
           uri: http://localhost:8081
           predicates:
-            - Path=/**
+            - Path=/api/estudiantes/**
         - id: ms-equipos
           uri: http://localhost:8082
           predicates:
-            - Path=/api/**
+            - Path=/api/equipos/**, /api/catalogo/**
         - id: ms-prestamos
           uri: http://localhost:8083
           predicates:
-            - Path=/api/**
+            - Path=/api/prestamos/**, /api/devoluciones/**, /api/reportes/prestamos/**
