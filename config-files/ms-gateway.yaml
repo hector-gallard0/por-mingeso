@@ -8,7 +8,7 @@ spring:
           enabled: true    
       routes:
         - id: ms-profesores
-          uri: lb://ms-profesores
+          uri: http://localhost:8081
           predicates:
             - Path=/api/profesores/**        
         - id: ms-equipos
