@@ -9,8 +9,8 @@ spring:
       ddl-auto: update
   datasource:
     url: jdbc:mysql://localhost:3306/db-profesores
-    username: ${
-    password: ${MYSQL_PASSWORD}
+    username: root
+    password: 1234
   kafka:
     bootstrap:
       servers: localhost:9092
