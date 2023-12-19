@@ -1,6 +1,6 @@
 server:
   port: 8081
-spring:
+spring:  
   jpa:
     database: MYSQL
     generate-ddl: true
@@ -9,5 +9,8 @@ spring:
       ddl-auto: update
   datasource:
     url: jdbc:mysql://localhost:3306/db-profesores
-    username: root
-    password: 1234
+    username: ${
+    password: ${MYSQL_PASSWORD}
+  kafka:
+    bootstrap:
+      servers: localhost:9092
