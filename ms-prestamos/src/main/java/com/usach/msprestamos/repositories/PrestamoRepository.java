@@ -20,7 +20,8 @@ public interface PrestamoRepository extends JpaRepository<Prestamo, Integer> {
             "p.idUso AS idUso " +
             "FROM Prestamo p " +
             "LEFT JOIN p.devolucion d " +  // LEFT JOIN en lugar de INNER JOIN
-            "WHERE p.idEquipo = :idEquipo")
+            "WHERE p.idEquipo = :idEquipo " +
+            "ORDER BY p.fecha DESC, p.hora DESC ")
     List<EntradaReporteQuery> findReporteByIdEquipo(@Param("idEquipo") Integer idEquipo);
 
     @Query("SELECT p " +

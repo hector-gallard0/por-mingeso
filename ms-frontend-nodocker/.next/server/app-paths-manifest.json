@@ -1,0 +1,7 @@
+{
+  "/equipos/page": "app/equipos/page.js",
+  "/equipos/ingresar/page": "app/equipos/ingresar/page.js",
+  "/profesores/registrar/page": "app/profesores/registrar/page.js",
+  "/equipos/[id]/reportes/page": "app/equipos/[id]/reportes/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
+}

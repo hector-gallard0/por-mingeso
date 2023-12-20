@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/profesores")
-@CrossOrigin
+@RequestMapping("/api/profesores")
 public class ProfesorController {
 
     ProfesorService profesorService;

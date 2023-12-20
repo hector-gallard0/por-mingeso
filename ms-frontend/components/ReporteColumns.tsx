@@ -42,7 +42,7 @@ export const reporteColumns: ColumnDef<Equipo>[] = [
   {
     accessorKey: "duracionPrestamo",
     header: () => <div className="text-center">Duración Préstamo</div>,    
-    cell: ({ row }) => <div className="text-center">{row.getValue("duracionPrestamo")}</div>,
+    cell: ({ row }) => <div className="text-center">{parseInt(row.getValue("duracionPrestamo"))}</div>,
   },
   {
     accessorKey: "estado",

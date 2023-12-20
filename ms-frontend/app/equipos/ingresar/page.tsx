@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default async function IngresarEquiposPage() {
   //revalidar cada 1 hora, solo por si acaso.
-  const response = await fetch("http://localhost:8080/api/catalogo", {next: { revalidate: 3600 }});
+  const response = await fetch("http://ms-gateway:8080/api/catalogo", {next: { revalidate: 3600 }});
   if(response.status !== 200) throw new Error("Failed to fetch catalogo");
   const rawResponse = await response.json();
   const catalogo:Catalogo = rawResponse.catalogo;
