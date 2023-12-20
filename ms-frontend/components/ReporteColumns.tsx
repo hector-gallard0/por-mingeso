@@ -2,56 +2,97 @@
  
 import Equipo from "@/types/Equipo"
 import { ColumnDef } from "@tanstack/react-table"
+import { Button } from "./ui/button"
+import { ArrowUpDown, Calendar } from "lucide-react"
+import { ReactNode } from "react"
+
+const SortingButton = ( column:any, text:string ) => {
+  return (
+    <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+    >       
+      {text}
+      <ArrowUpDown className="ml-2 h-4 w-4" />
+    </Button>
+  )
+}
 
 export const reporteColumns: ColumnDef<Equipo>[] = [
   {
     accessorKey: "fechaPrestamo",
-    header: () => <div className="text-center">Fecha préstamo</div>,    
+    header: ({ column }) => {
+      return (
+        SortingButton(column, "Fecha préstamo")
+      )
+    },    
     cell: ({ row }) => <div className="text-center">{row.getValue("fechaPrestamo")}</div>,
   },
   {
     accessorKey: "horaPrestamo",
-    header: () => <div className="text-center">Hora préstamo</div>,    
+    header: ({ column }) => {
+      return SortingButton(column, "Hora préstamo")
+    },    
     cell: ({ row }) => <div className="text-center">{row.getValue("horaPrestamo")}</div>,
   },
   {
     accessorKey: "fechaDevolucion",
-    header: () => <div className="text-center">Fecha devolución</div>,    
-    cell: ({ row }) => <div className="text-center">{row.getValue("fechaDevolucion")}</div>,
+    header: ({ column }) => {
+      return SortingButton(column, "Fecha devolución")
+    },    
+    cell: ({ row }) => {
+      const fechaDevolucion:any = row.getValue("fechaDevolucion");
+      return <div className="text-center">{fechaDevolucion != undefined ? fechaDevolucion : <span className="text-red-500 font-medium">{'Sin devolución'}</span>}</div>
+    },
   },
   {
     accessorKey: "horaDevolucion",
-    header: () => <div className="text-center">Hora devolución</div>,    
-    cell: ({ row }) => <div className="text-center">{row.getValue("horaDevolucion")}</div>,
+    header: ({ column }) => {
+      return SortingButton(column, "Hora devolución")
+    },    
+    cell: ({ row }) => {
+      const horaDevolucion:any = row.getValue("fechaDevolucion");
+      return <div className="text-center">{horaDevolucion != undefined ? horaDevolucion : <span className="text-red-500 font-medium">{'Sin devolución'}</span>}</div>
+    },
   },
   {
     accessorKey: "rutProfesor",
-    header: () => <div className="text-center">RUT profesor</div>,    
+    header: ({ column }) => {
+      return SortingButton(column, "RUT profesor")
+    }, 
     cell: ({ row }) => <div className="text-center">{row.getValue("rutProfesor")}</div>,
   },
   {
-    accessorKey: "nombreProfesor",
-    header: () => <div className="text-center">Nombre profesor</div>,    
-    cell: ({ row }) => <div className="text-center">{row.getValue("nombreProfesor")}</div>,
-  },
-  {
-    accessorKey: "apellidoProfesor",
-    header: () => <div className="text-center">Apellido Profesor</div>,    
-    cell: ({ row }) => <div className="text-center">{row.getValue("apellidoProfesor")}</div>,
-  },
-  {
     accessorKey: "duracionPrestamo",
-    header: () => <div className="text-center">Duración Préstamo</div>,    
-    cell: ({ row }) => <div className="text-center">{parseInt(row.getValue("duracionPrestamo"))}</div>,
+    header: ({ column }) => {
+      return SortingButton(column, "Duración")
+    }, 
+    cell: ({ row }) => {
+      const duracionEnHoras = Math.floor(parseInt(row.getValue("duracionPrestamo")));
+      let texto = "";
+      if(duracionEnHoras < 60) {
+        texto += `${duracionEnHoras.toString()} segundos`
+      }else if(duracionEnHoras < 3660) {
+        texto += `${Math.floor(duracionEnHoras/60)} minutos`
+      }else{
+        texto += `${Math.floor(duracionEnHoras/3600)} horas`
+      }
+      return <div className="text-center">{texto}</div>
+    },
   },
   {
     accessorKey: "estado",
-    header: () => <div className="text-center">Estado equipo</div>,    
+    header: ({ column }) => {
+      return SortingButton(column, "Estado")
+    },     
     cell: ({ row }) => <div className="text-center">{row.getValue("estado")}</div>,
   },
   {
     accessorKey: "uso",
-    header: () => <div className="text-center">Uso</div>,    
+    header: ({ column }) => {
+      return SortingButton(column, "Uso")
+    },        
     cell: ({ row }) => <div className="text-center">{row.getValue("uso")}</div>,
   },
 ]
